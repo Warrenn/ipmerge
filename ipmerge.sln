@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ipmerge", "ipmerge/ipmerge.csproj", "{ACC5A517-6711-4C6D-AB0C-B6E84D7E44DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{0C28867B-ACCF-490A-A85A-759BF43F5873}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACC5A517-6711-4C6D-AB0C-B6E84D7E44DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC5A517-6711-4C6D-AB0C-B6E84D7E44DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC5A517-6711-4C6D-AB0C-B6E84D7E44DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC5A517-6711-4C6D-AB0C-B6E84D7E44DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C28867B-ACCF-490A-A85A-759BF43F5873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C28867B-ACCF-490A-A85A-759BF43F5873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C28867B-ACCF-490A-A85A-759BF43F5873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C28867B-ACCF-490A-A85A-759BF43F5873}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
