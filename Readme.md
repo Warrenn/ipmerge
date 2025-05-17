@@ -19,10 +19,10 @@
 
 ### Download precompiled binary
 
-Grab the latest release from the [Releases](https://github.com/your-org/ipmerge/releases) page:
+Grab the latest release from the [Releases](https://github.com/warrenn/ipmerge/releases) page:
 
 ```bash
-wget https://github.com/your-org/ipmerge/releases/download/vX.Y.Z/ipmerge-linux-x64
+wget https://github.com/warrenn/ipmerge/releases/download/vX.Y.Z/ipmerge-linux-x64
 chmod +x ipmerge-linux-x64
 sudo mv ipmerge-linux-x64 /usr/local/bin/ipmerge
 ```
@@ -30,7 +30,7 @@ sudo mv ipmerge-linux-x64 /usr/local/bin/ipmerge
 ### Or build from source (requires Docker)
 
 ```bash
-git clone https://github.com/your-org/ipmerge.git
+git clone https://github.com/warrenn/ipmerge.git
 cd ipmerge
 ./build.sh
 ```
@@ -160,4 +160,4 @@ Contributions, issues, and suggestions welcome via pull requests or discussions.
 
 ## ✉️ Contact
 
-Maintained by [@yourhandle](https://github.com/yourhandle).
+Maintained by [@warrenn](https://github.com/warrenn).
