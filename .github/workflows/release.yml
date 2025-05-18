@@ -18,17 +18,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build docker image
-        run: docker build --platform=linux/amd64 -t ipmerge-builder -f ipmerge/Dockerfile ./ipmerge
-
-      - name: Extract built binary from container
-        run: |
-          docker create --name ipmerge-temp ipmerge-builder
-          docker cp ipmerge-temp:/app/out/ipmerge ./ipmerge-linux-x64
-          docker rm ipmerge-temp
+        run: ./ipmerge/build.sh
 
       - name: Upload binary to GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./ipmerge-linux-x64
+          files: ./ipmerge/output/ipmerge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

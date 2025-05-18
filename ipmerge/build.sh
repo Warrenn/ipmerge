@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+cd "$(dirname "$0")"
 # Build image
 docker build -t ipmerge-builder .
 
