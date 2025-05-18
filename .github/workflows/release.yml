@@ -9,34 +9,24 @@ permissions:
   contents: write
 
 jobs:
-  build-linux-aot:
-    name: Build Linux x64 AOT binary
+  build-and-release:
+    name: Build using Docker and publish to GitHub Releases
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/dotnet/sdk:8.0
 
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Install required packages
+      - name: Build docker image
+        run: docker build --platform=linux/amd64 -t ipmerge-builder .
+
+      - name: Extract built binary from container
         run: |
-          apt-get update
-          apt-get install -y clang lld zlib1g-dev gcc libpthread-stubs0-dev
+          docker create --name ipmerge-temp ipmerge-builder
+          docker cp ipmerge-temp:/app/out/ipmerge ./ipmerge-linux-x64
+          docker rm ipmerge-temp
 
-      - name: Publish Native AOT
-        run: |
-          dotnet publish -c Release -r linux-x64 \
-            -p:PublishAot=true \
-            -p:SelfContained=true \
-            -p:IlcUseLld=true \
-            -p:IlcUseLLVM=true \
-            -o ./publish
-
-      - name: Rename binary for release
-        run: mv ./publish/ipmerge ./ipmerge-linux-x64
-
-      - name: Upload Release binary
+      - name: Upload binary to GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: ./ipmerge-linux-x64
