@@ -25,11 +25,11 @@ jobs:
           cd ./ipmerge/output
 
           pushd ./app/linux-x64-aot || exit 1
-          tar -cvz --options gzip:compression-level=9 -f ../../linux-x64-aot.tar.gz .
+          tar -czf ../../linux-x64-aot.tar.gz .
           popd || exit 1
 
           pushd ./app/linux-x64-net || exit 1
-          tar -cvz --options gzip:compression-level=9 -f ../../linux-x64-net.tar.gz .
+          tar -czf ../../linux-x64-net.tar.gz .
           popd || exit 1
 
       - name: Create intaller script
