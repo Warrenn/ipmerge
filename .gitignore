@@ -62,3 +62,10 @@ nunit-*.xml
 .idea/
 output/
 *.user
+
+.DS_STORE
+*.suo
+*.userprefs
+*.sln.docstates
+*.sln.ide
+*.sln.ide.user

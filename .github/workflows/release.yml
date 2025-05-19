@@ -17,12 +17,39 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Build docker image
-        run: ./ipmerge/build.sh
+      - name: Build linux binaries from docker image
+        run: ./ipmerge/build-linux-x64.sh
+        
+      - name: Create release files tar.gz
+        run: |
+          cd ./ipmerge/output
 
-      - name: Upload binary to GitHub release
+          pushd ./app/linux-x64-aot || exit 1
+          tar -cvz --options gzip:compression-level=9 -f ../../linux-x64-aot.tar.gz .
+          popd || exit 1
+
+          pushd ./app/linux-x64-net || exit 1
+          tar -cvz --options gzip:compression-level=9 -f ../../linux-x64-net.tar.gz .
+          popd || exit 1
+
+      - name: Create intaller script
+        run: |
+          cd ./ipmerge/output
+          TAG="${GITHUB_REF##*/}"
+          INSTALL_SCRIPT="install.sh"
+          echo "#!/bin/bash" > $INSTALL_SCRIPT
+          echo "sudo ./setup-ipmerge.sh ${TAG}" >> $INSTALL_SCRIPT
+          echo "source /etc/profile.d/ipmerge-alias.sh" >> $INSTALL_SCRIPT
+          chmod +x $INSTALL_SCRIPT
+          cp ../setup-ipmerge.sh .
+          tar -czf linux-x64-installer.tar.gz setup-ipmerge.sh $INSTALL_SCRIPT
+          
+      - name: Upload binaries to GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./ipmerge/output/ipmerge
+          files: |
+            ./ipmerge/output/linux-x64-aot.tar.gz
+            ./ipmerge/output/linux-x64-net.tar.gz
+            ./ipmerge/output/linux-x64-installer.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

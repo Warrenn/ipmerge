@@ -17,14 +17,36 @@
 
 ## 📦 Installation
 
-### Download precompiled binary
+### Download and install using the installer tarball
 
-Grab the latest release from the [Releases](https://github.com/warrenn/ipmerge/releases) page:
+Grab the latest installer tarball from the [Releases](https://github.com/warrenn/ipmerge/releases) page and run the installer script:
 
 ```bash
-wget https://github.com/warrenn/ipmerge/releases/download/vX.Y.Z/ipmerge-linux-x64
-chmod +x ipmerge-linux-x64
-sudo mv ipmerge-linux-x64 /usr/local/bin/ipmerge
+# Download the latest installer tar.gz (where vX.Y.Z is latest the version, e.g. v1.0.4)
+wget https://github.com/warrenn/ipmerge/releases/download/vX.Y.Z/linux-x64-installer.tar.gz
+
+# Extract the installer files
+tar -xzf linux-x64-installer.tar.gz
+
+# Run the installer script (this will install the vX.Y.Z version)
+sudo ./install.sh
+
+# (Optional) Activate the alias in your current shell session
+source /etc/profile.d/ipmerge-alias.sh
+```
+
+### Download precompiled binary (manual method)
+
+Alternatively, you can download the precompiled binary directly:
+
+```bash
+wget https://github.com/warrenn/ipmerge/releases/download/vX.Y.Z/linux-x64-aot.tar.gz
+
+# Extract the installer files
+tar -xzf linux-x64-aot.tar.gz
+
+chmod +x ipmerge
+sudo mv ipmerge /usr/local/bin/ipmerge
 ```
 
 ### Or build from source (requires Docker)
@@ -32,10 +54,10 @@ sudo mv ipmerge-linux-x64 /usr/local/bin/ipmerge
 ```bash
 git clone https://github.com/warrenn/ipmerge.git
 cd ipmerge
-./build.sh
+./build-linux-x64.sh
 ```
 
-The binary will be available in `./output/ipmerge`.
+The binaries will be available in `./output/app`.
 
 ---
 
