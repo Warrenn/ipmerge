@@ -9,7 +9,6 @@ if [ -z "$1" ]; then
 fi
 
 # Variables
-DOTNET_VERSION="8.0"
 DOTNET_INSTALL_DIR="/usr/share/dotnet"
 DOTNET_BINARY="$DOTNET_INSTALL_DIR/dotnet"
 ALIAS_NAME="ipmerge"
@@ -24,7 +23,7 @@ if ! command -v dotnet >/dev/null 2>&1; then
   echo "Installing .NET $DOTNET_VERSION runtime..."
   wget https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
   chmod +x /tmp/dotnet-install.sh
-  /tmp/dotnet-install.sh --runtime dotnet --version $DOTNET_VERSION --install-dir $DOTNET_INSTALL_DIR
+  /tmp/dotnet-install.sh --install-dir $DOTNET_INSTALL_DIR
   ln -s $DOTNET_BINARY /usr/bin/dotnet
   echo ".NET $DOTNET_VERSION runtime installed successfully."
 else
