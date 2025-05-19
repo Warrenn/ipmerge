@@ -63,7 +63,7 @@ nunit-*.xml
 output/
 *.user
 
-.DS_STORE
+# .DS_STORE
 *.suo
 *.userprefs
 *.sln.docstates
