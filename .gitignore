@@ -69,3 +69,4 @@ output/
 *.sln.docstates
 *.sln.ide
 *.sln.ide.user
+**/.DS_Store
