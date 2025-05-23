@@ -45,4 +45,4 @@ echo "alias $ALIAS_NAME='dotnet $IPMERGE_DLL'" > $ALIAS_FILE
 chmod +x $ALIAS_FILE
 echo "Global alias '$ALIAS_NAME' created."
 
-echo "Installation complete. Please log out and log back in to use the 'ipmerge' command."
+echo "Installation complete. Please log out and log back in to use the 'ipmerge' command, or run `source $ALIAS_FILE`."
